@@ -1,8 +1,8 @@
-// admin/src/api/axios.ts  (zaten ekledin)
+// admin/src/api/axios.ts
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3001/api",
+  baseURL: import.meta.env.VITE_API_URL, // ✅ Artık environment'tan alıyor
   withCredentials: true,
 });
 
@@ -18,4 +18,6 @@ api.interceptors.request.use((config) => {
 });
 
 export default api;
-export const STATIC_BASE = "http://localhost:3001";
+
+// ✅ Statik dosyalar için (örneğin resim URL'leri)
+export const STATIC_BASE = import.meta.env.VITE_STATIC_URL;
