@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🔹 Temel renk değişkenleri */
+:root {
+  --primary: #0077ff;
+  --text-light: #213547;
+  --text-dark: #f3f4f6;
+  --bg-light: #f8fafc;
+  --bg-dark: #0f172a;
+}
+
+/* 🎯 Genel ayarlar */
+html {
+  scroll-behavior: smooth;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* 🌞 Light & 🌙 Dark */
+body {
+  @apply text-gray-800 dark:text-gray-100 bg-white dark:bg-[#0f172a];
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  transition: background 0.6s ease, color 0.6s ease;
+  min-height: 100vh;
+}
+
+/* 🔹 Ana içerik hizalama */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 3rem;
+  line-height: 1.6;
+  transition: all 0.5s ease;
+}
+
+/* Başlıklar */
+h1 {
+  @apply text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-4 transition-colors;
+}
+
+h2 {
+  @apply text-3xl font-bold text-gray-800 dark:text-gray-100 mb-3 transition-colors;
+}
+
+/* Paragraflar */
+p {
+  @apply text-lg leading-relaxed mb-2 transition-colors;
+}
+
+/* Linkler */
+a {
+  @apply text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition;
+}
+
+/* 🔸 Cam efektli kart (global kullanım için) */
+.glass-card {
+  @apply rounded-xl p-6 transition-all duration-300;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.dark .glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(96, 165, 250, 0.3);
+}
+
+/* 🔹 Tema geçişleri daha yumuşak olsun */
+* {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Tailwind dark-mode için yedek */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+}

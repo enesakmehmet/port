@@ -1,0 +1,67 @@
+/* 🔹 Root kapsayıcı (sayfa ortalama + hizalama) */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+/* Logo animasyonu */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms ease;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #0077ffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+/* 🌀 Logo dönüş animasyonu */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Sadece motion aktifse */
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* Kart yapısı */
+.card {
+  padding: 2em;
+  @apply rounded-xl shadow-md transition-all;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.dark .card {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Bilgilendirme yazısı */
+.read-the-docs {
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* 🔹 Navbar / Footer için geçiş */
+nav, footer {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* 🌈 Fade geçişli tema değişimi efekti */
+html.transition,
+html.transition * {
+  transition: all 0.4s ease !important;
+}

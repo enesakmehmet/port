@@ -1,0 +1,162 @@
+/* 🧭 Navbar temel yapı */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  padding: 0 2rem;
+}
+
+.navbar-scrolled {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* İçerik hizalama */
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px; /* 🔼 daha ferah */
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+/* 🧱 Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.logo-svg {
+  height: 48px; /* 🔼 logoyu büyüttük */
+  width: auto;
+  display: block;
+  transform-origin: left center;
+  transition: transform 0.2s ease;
+  margin-top: 3px;
+}
+
+.logo-svg:hover {
+  transform: scale(1.05);
+}
+
+/* 🔗 Linkler */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary);
+}
+
+/* 🎛 Aksiyon butonları (tema + menü) */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-right: 0.5rem;
+}
+
+.theme-toggle,
+.menu-toggle {
+  border: 1px solid #ccc;
+  background: transparent;
+  width: 42px; /* 🔼 daha dengeli */
+  height: 42px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover,
+.menu-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* 📱 Mobil uyum */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 72px; /* 🔼 yeni navbar yüksekliği */
+    right: -100%;
+    width: 100%;
+    height: calc(100vh - 72px);
+    background: var(--bg);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.3s ease;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .theme-toggle {
+    display: block;
+  }
+
+  .navbar {
+    padding: 0 1.25rem;
+  }
+
+  .logo-svg {
+    height: 42px; /* 🔽 mobilde biraz küçült */
+  }
+}
+
+/* Masaüstü */
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/* 🌙 Dark mode */
+[data-theme="dark"] .navbar {
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .nav-links a {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .nav-links a.active {
+  color: var(--primary);
+}
+
+[data-theme="dark"] .menu-toggle,
+[data-theme="dark"] .theme-toggle {
+  border-color: #444;
+  color: #f3f4f6;
+}
