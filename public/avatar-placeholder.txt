@@ -1,0 +1,4 @@
+Avatar resminizi buraya "avatar.jpg" adıyla ekleyin.
+
+Önerilen boyut: 400x400 piksel
+Format: JPG, PNG veya WebP

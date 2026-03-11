@@ -1,18 +1,6 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import {
-  Container,
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  Chip,
-  Stack,
-  Button,
-  Box,
-} from "@mui/material";
-import LaunchIcon from "@mui/icons-material/Launch";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import { motion } from "framer-motion";
+import { ExternalLink, Github, Calendar, Code2, Hash, Smartphone } from "lucide-react";
+import { SiReact, SiTypescript, SiTailwindcss, SiJavascript, SiHtml5, SiCss3, SiNextdotjs, SiNodedotjs, SiPostgresql, SiExpo, SiPrisma, SiExpress } from "react-icons/si";
 
 interface Project {
   id: number;
@@ -24,173 +12,299 @@ interface Project {
   techs: string[];
   liveUrl: string;
   repoUrl: string;
+  playStoreUrl?: string;
   createdAt: string;
 }
 
 export default function Projects() {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const projects: Project[] = [
+    {
+      id: 0,
+      title: "Ehliyet Al 2026 - Mobil Uygulama",
+      description:
+        "Sürücü adayları için geliştirdiğim, React Native ve Node.js tabanlı full-stack sınav hazırlık uygulamasıdır. İçerisinde deneme sınavları, konu anlatımları, kişiselleştirilmiş istatistik takibi ve günlük hedefler barındırır. PostgreSQL ve Prisma kullanılarak sağlam bir veri mimarisi üzerine inşa edilmiştir. AdMob reklam entegrasyonu ve Telegram bot destekli bildirim sistemi ile ticari bir ürün niteliği taşır.",
+      mainLang: "TypeScript",
+      imageUrl: "/ehliyet-al-2026.png",
+      topics: ["mobile", "react-native", "full-stack", "ios", "android", "nodejs", "postgresql", "education"],
+      techs: ["React Native", "Node.js", "TypeScript", "PostgreSQL", "Expo", "Prisma", "Express.js"],
+      liveUrl: "https://apps.apple.com/us/app/ehliyet-al-2026/id6757499824",
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.enesakmehmet.ehliyetal2026",
+      repoUrl: "",
+      createdAt: "2026-01-01",
+    },
+    {
+      id: 1,
+      title: "Donanım Kıyasla - Mobil Uygulama & Yönetim Paneli",
+      description:
+        "iOS ve Android için full-stack mobil uygulama. CPU/GPU karşılaştırma, darboğaz analizi, PC Builder ve sistem tavsiyesi özellikleri. React Native (Expo) ile mobil uygulama, Node.js/Express backend ve React.js admin paneli. PostgreSQL veritabanı, push bildirim sistemi ve AdMob reklam entegrasyonu.",
+      mainLang: "TypeScript",
+      imageUrl: "/donanim-kiyasla.png",
+      topics: ["mobile", "react-native", "full-stack", "ios", "android", "nodejs", "postgresql"],
+      techs: ["React Native", "Node.js", "TypeScript", "PostgreSQL", "Expo", "Prisma", "Express.js"],
+      liveUrl: "https://apps.apple.com/us/app/donanım-kıyasla/id6756779775",
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.enes.donanimkiyasla",
+      repoUrl: "",
+      createdAt: "2024-11-01",
+    },
+    {
+      id: 2,
+      title: "CryptoTrade Exchange",
+      description:
+        "Modern kripto para alım satım platformu. Gerçek zamanlı fiyat takibi ve güvenli işlem özellikleri. React, TypeScript ve Tailwind CSS ile optimal performans için geliştirildi.",
+      mainLang: "TypeScript",
+      imageUrl: "https://i.imgur.com/DAMfBJY.png",
+      topics: ["react", "typescript", "tailwind", "crypto"],
+      techs: ["React", "TypeScript", "Tailwind CSS"],
+      liveUrl: "",
+      repoUrl: "https://github.com/enesakmehmet/Cyrpto",
+      createdAt: "2024-01-15",
+    },
+    {
+      id: 3,
+      title: "Game Key Store",
+      description:
+        "Modern oyun key pazaryeri platformu. Dijital oyun keylerini güvenli işlemlerle alıp satın. HTML, CSS ve JavaScript ile hızlı ve responsive kullanıcı deneyimi için geliştirildi.",
+      mainLang: "JavaScript",
+      imageUrl: "https://i.imgur.com/UdSpZmQ.png",
+      topics: ["game", "marketplace", "ecommerce", "keys"],
+      techs: ["HTML5", "CSS3", "JavaScript"],
+      liveUrl: "",
+      repoUrl: "https://github.com/enesakmehmet/game-web-v3",
+      createdAt: "2024-02-20",
+    },
+    {
+      id: 4,
+      title: "DoomGame Web",
+      description:
+        "Klasik Doom oyununun web versiyonu. Modern web teknolojileri ile nostaljik oyun deneyimi için yeniden oluşturuldu.",
+      mainLang: "JavaScript",
+      imageUrl: "https://i.imgur.com/Gs0vadm.png",
+      topics: ["game", "web", "doom", "retro"],
+      techs: ["JavaScript", "HTML5", "Canvas"],
+      liveUrl: "https://doom-web.vercel.app",
+      repoUrl: "https://github.com/enesakmehmet/Doom-web",
+      createdAt: "2024-03-10",
+    },
+    {
+      id: 5,
+      title: "Movie Web",
+      description:
+        "Kapsamlı film veritabanı platformu. Detaylı bilgiler, kullanıcı yorumları, puanlar ve fragmanlar. Binlerce filmi gelişmiş arama ve filtreleme seçenekleriyle keşfedin. HTML, CSS ve JavaScript ile geliştirildi.",
+      mainLang: "JavaScript",
+      imageUrl: "https://i.imgur.com/wRG3Suf.png",
+      topics: ["movies", "database", "reviews", "trailers"],
+      techs: ["HTML5", "CSS3", "JavaScript"],
+      liveUrl: "",
+      repoUrl: "https://github.com/enesakmehmet/movie-app",
+      createdAt: "2024-04-15",
+    },
+    {
+      id: 6,
+      title: "Otel Web",
+      description:
+        "Modern otel rezervasyon platformu. Oda kiralama, müsaitlik kontrolü ve online rezervasyon özellikleri. Kullanıcı dostu arayüz ile kolay rezervasyon deneyimi. HTML, CSS ve JavaScript ile geliştirildi.",
+      mainLang: "JavaScript",
+      imageUrl: "https://i.imgur.com/2LKWnSO.png",
+      topics: ["hotel", "booking", "reservation", "rooms"],
+      techs: ["HTML5", "CSS3", "JavaScript"],
+      liveUrl: "",
+      repoUrl: "https://github.com/enesakmehmet/otel-web-v3",
+      createdAt: "2024-05-20",
+    },
+    {
+      id: 7,
+      title: "Corporate Website",
+      description:
+        "Professional corporate presentation website with modern design. Showcasing company services, portfolio and contact information. Built with Next.js for optimal performance and SEO. Server-side rendering for fast page loads.",
+      mainLang: "TypeScript",
+      imageUrl: "https://i.imgur.com/6KBbBP0.png",
+      topics: ["nextjs", "corporate", "business", "seo"],
+      techs: ["Next.js", "TypeScript", "Tailwind CSS"],
+      liveUrl: "",
+      repoUrl: "https://github.com/enesakmehmet/sirket-tanitim",
+      createdAt: "2024-06-10",
+    },
+    {
+      id: 8,
+      title: "Happy Pets",
+      description:
+        "Veteriner kliniği web sitesi. Randevu sistemi, hizmet tanıtımı ve evcil hayvan bakım bilgileri. Kullanıcı dostu arayüz ile kolay rezervasyon deneyimi. HTML, CSS ve JavaScript ile geliştirildi.",
+      mainLang: "JavaScript",
+      imageUrl: "https://i.imgur.com/xU1R48d.png",
+      topics: ["veterinary", "pets", "clinic", "appointment"],
+      techs: ["HTML5", "CSS3", "JavaScript"],
+      liveUrl: "",
+      repoUrl: "https://github.com/enesakmehmet/Pad-shop-Web-React",
+      createdAt: "2024-07-15",
+    },
+    {
+      id: 9,
+      title: "Weather Tracker",
+      description:
+        "Şehir bazlı hava durumu takip sistemi. Anlık hava durumu bilgileri, 5 günlük tahmin ve detaylı meteoroloji verileri. API entegrasyonu ile gerçek zamanlı veri çekimi. HTML, CSS ve JavaScript ile geliştirildi.",
+      mainLang: "JavaScript",
+      imageUrl: "https://i.imgur.com/W6TBNcA.png",
+      topics: ["weather", "api", "forecast", "city"],
+      techs: ["HTML5", "CSS3", "JavaScript"],
+      liveUrl: "",
+      repoUrl: "https://github.com/enesakmehmet/weather-app-react",
+      createdAt: "2024-08-20",
+    },
+  ];
 
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/projects`)
-      .then((res) => setProjects(res.data))
-      .catch((err) => console.error("Projeler alınamadı:", err));
-  }, []);
+  const getTechIcon = (tech: string) => {
+    switch (tech.toLowerCase()) {
+      case "react": return <SiReact className="text-[#61DAFB]" />;
+      case "react native": return <SiReact className="text-[#61DAFB]" />;
+      case "typescript": return <SiTypescript className="text-[#3178C6]" />;
+      case "javascript": return <SiJavascript className="text-[#F7DF1E]" />;
+      case "tailwind css": return <SiTailwindcss className="text-[#06B6D4]" />;
+      case "html5": return <SiHtml5 className="text-[#E34F26]" />;
+      case "css3": return <SiCss3 className="text-[#1572B6]" />;
+      case "next.js": return <SiNextdotjs className="text-black dark:text-white" />;
+      case "node.js": return <SiNodedotjs className="text-[#339933]" />;
+      case "postgresql": return <SiPostgresql className="text-[#4169E1]" />;
+      case "expo": return <SiExpo className="text-black dark:text-white" />;
+      case "prisma": return <SiPrisma className="text-[#2D3748] dark:text-white" />;
+      case "express.js": return <SiExpress className="text-black dark:text-white" />;
+      default: return <Code2 size={16} />;
+    }
+  };
 
   return (
-    <Container sx={{ py: 8 }}>
-      <Typography
-        variant="h4"
-        align="center"
-        fontWeight={700}
-        gutterBottom
-        sx={{ color: "white", mb: 5 }}
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-16"
       >
-        💼 Projelerim
-      </Typography>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+          💼 Projelerim
+        </h2>
+        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          Geliştirdiğim modern web uygulamaları ve açık kaynak projeler.
+        </p>
+      </motion.div>
 
-      <Box
-        sx={{
-          display: "grid",
-          gridTemplateColumns: {
-            xs: "1fr",
-            sm: "1fr 1fr",
-            md: "1fr 1fr 1fr",
-          },
-          gap: 4,
-        }}
-      >
-        {projects.map((p) => (
-          <Card
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto pb-12">
+        {projects.map((p, index) => (
+          <motion.div
             key={p.id}
-            sx={{
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              borderRadius: 3,
-              bgcolor: "#1a1a2e",
-              color: "white",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
-              transition: "all 0.3s ease",
-              "&:hover": {
-                transform: "translateY(-6px)",
-                boxShadow: "0 6px 30px rgba(0,0,0,0.6)",
-              },
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="glass-card group flex flex-col h-full hover:border-blue-500/30 dark:hover:border-blue-400/30"
           >
-            {p.imageUrl && (
-              <CardMedia
-                component="img"
-                sx={{
-                  height: 180,
-                  objectFit: "cover",
-                  borderRadius: "12px 12px 0 0",
-                }}
-                image={p.imageUrl}
+            {/* Image Container */}
+            <div className="relative overflow-hidden rounded-xl mb-5 aspect-video">
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors z-10" />
+              <img
+                src={p.imageUrl}
                 alt={p.title}
+                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                style={p.id === 0 ? { objectPosition: 'center 45%' } : {}}
               />
-            )}
+              <div className="absolute top-3 right-3 z-20">
+                <span className="px-3 py-1 text-xs font-semibold bg-black/50 backdrop-blur-md text-white rounded-full border border-white/10">
+                  {p.mainLang}
+                </span>
+              </div>
+            </div>
 
-            <CardContent sx={{ flexGrow: 1 }}>
-              <Typography
-                variant="h6"
-                gutterBottom
-                sx={{ fontWeight: 700, color: "#f0f0f0" }}
-              >
-                {p.title}
-              </Typography>
+            {/* Content */}
+            <div className="flex flex-col flex-grow">
+              <div className="flex justify-between items-start mb-3">
+                <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  {p.title}
+                </h3>
+                <div className="flex items-center text-xs text-slate-500 dark:text-slate-400">
+                  <Calendar size={14} className="mr-1" />
+                  {new Date(p.createdAt).toLocaleDateString("tr-TR")}
+                </div>
+              </div>
 
-              <Typography variant="body2" color="gray" mb={1}>
-                {new Date(p.createdAt).toLocaleDateString("tr-TR")}
-              </Typography>
+              <div className="relative group/desc">
+                <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 line-clamp-4 flex-grow">
+                  {p.description}
+                </p>
+                {/* Hover'da tam açıklama */}
+                <div className="absolute left-0 right-0 bottom-full mb-2 p-4 bg-white dark:bg-slate-800 rounded-lg shadow-2xl border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover/desc:opacity-100 group-hover/desc:visible transition-all duration-300 z-50 max-w-md">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                    {p.description}
+                  </p>
+                </div>
+              </div>
 
-              <Typography
-                variant="body2"
-                color="rgba(255,255,255,0.8)"
-                mb={2}
-              >
-                {p.description?.slice(0, 120) || "Açıklama yok."}
-                {p.description?.length > 120 ? "..." : ""}
-              </Typography>
+              {/* Tech Stack */}
+              <div className="mb-6">
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {p.techs.map((tech, i) => (
+                    <div key={i} className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-700 dark:text-slate-300">
+                      {getTechIcon(tech)}
+                      {tech}
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {p.topics.map((topic, i) => (
+                    <span key={i} className="flex items-center text-xs text-blue-600 dark:text-blue-400">
+                      <Hash size={12} className="mr-0.5" />
+                      {topic}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-              {p.mainLang && (
-                <Chip
-                  label={p.mainLang}
-                  sx={{
-                    bgcolor: "#007acc",
-                    color: "white",
-                    fontWeight: 600,
-                    mb: 2,
-                  }}
-                />
-              )}
-
-              <Stack direction="row" flexWrap="wrap" spacing={1} mb={2}>
-                {p.topics?.slice(0, 4).map((t, i) => (
-                  <Chip
-                    key={i}
-                    label={`#${t}`}
-                    size="small"
-                    sx={{
-                      bgcolor: "rgba(255,255,255,0.1)",
-                      color: "white",
-                    }}
-                  />
-                ))}
-              </Stack>
-
-              <Stack direction="row" spacing={1}>
+              {/* Actions */}
+              <div className="flex gap-3 mt-auto pt-4 border-t border-slate-200 dark:border-slate-700/50">
                 {p.liveUrl && (
-                  <Button
-                    size="small"
-                    variant="outlined"
-                    startIcon={<LaunchIcon />}
-                    sx={{
-                      borderColor: "rgba(255,255,255,0.4)",
-                      color: "white",
-                      "&:hover": {
-                        borderColor: "#00bcd4",
-                        color: "#00bcd4",
-                      },
-                    }}
+                  <a
                     href={p.liveUrl}
                     target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors shadow-lg shadow-blue-500/20"
                   >
-                    Canlı Demo
-                  </Button>
+                    {p.liveUrl.includes('apps.apple.com') ? <Smartphone size={16} /> : <ExternalLink size={16} />}
+                    {p.liveUrl.includes('apps.apple.com') ? 'App Store' : 'Canlı Demo'}
+                  </a>
+                )}
+                {p.playStoreUrl && (
+                  <a
+                    href={p.playStoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white text-sm font-medium transition-colors shadow-lg shadow-green-500/20"
+                  >
+                    <Smartphone size={16} />
+                    Google Play
+                  </a>
                 )}
                 {p.repoUrl && (
-                  <Button
-                    size="small"
-                    variant="outlined"
-                    startIcon={<GitHubIcon />}
-                    sx={{
-                      borderColor: "rgba(255,255,255,0.4)",
-                      color: "white",
-                      "&:hover": {
-                        borderColor: "#00bcd4",
-                        color: "#00bcd4",
-                      },
-                    }}
+                  <a
                     href={p.repoUrl}
                     target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg border transition-colors text-sm font-medium ${p.liveUrl || p.playStoreUrl
+                      ? "border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
+                      : "bg-slate-800 hover:bg-slate-900 text-white dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 w-full"
+                      }`}
                   >
+                    <Github size={16} />
                     GitHub
-                  </Button>
+                  </a>
                 )}
-              </Stack>
-            </CardContent>
-          </Card>
+              </div>
+            </div>
+          </motion.div>
         ))}
-      </Box>
+      </div>
 
       {projects.length === 0 && (
-        <Box textAlign="center" mt={5}>
-          <Typography color="gray">
-            Henüz proje eklenmemiş. Admin panelden yeni proje ekleyebilirsin.
-          </Typography>
-        </Box>
+        <div className="text-center mt-20">
+          <p className="text-slate-500 dark:text-slate-400">Henüz proje eklenmemiş.</p>
+        </div>
       )}
-    </Container>
+    </div>
   );
 }

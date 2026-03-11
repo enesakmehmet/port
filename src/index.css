@@ -4,9 +4,11 @@
 
 /* 🔹 Temel renk değişkenleri */
 :root {
-  --primary: #0077ff;
-  --text-light: #213547;
-  --text-dark: #f3f4f6;
+  --primary: #3b82f6;
+  --secondary: #8b5cf6;
+  --accent: #ec4899;
+  --text-light: #1e293b;
+  --text-dark: #f8fafc;
   --bg-light: #f8fafc;
   --bg-dark: #0f172a;
 }
@@ -14,72 +16,157 @@
 /* 🎯 Genel ayarlar */
 html {
   scroll-behavior: smooth;
-  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* 🌞 Light & 🌙 Dark */
 body {
-  @apply text-gray-800 dark:text-gray-100 bg-white dark:bg-[#0f172a];
   margin: 0;
   padding: 0;
-  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
-  transition: background 0.6s ease, color 0.6s ease;
-  min-height: 100vh;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
 }
 
-/* 🔹 Ana içerik hizalama */
-main {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 6rem 1.5rem 3rem;
-  line-height: 1.6;
-  transition: all 0.5s ease;
+/* 🌟 Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400 dark:bg-slate-600;
 }
 
 /* Başlıklar */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply tracking-tight font-bold;
+}
+
 h1 {
-  @apply text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-4 transition-colors;
+  @apply text-4xl md:text-6xl mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600 dark:from-blue-400 dark:to-violet-400;
 }
 
 h2 {
-  @apply text-3xl font-bold text-gray-800 dark:text-gray-100 mb-3 transition-colors;
+  @apply text-3xl md:text-4xl mb-4 text-slate-800 dark:text-slate-100;
 }
 
 /* Paragraflar */
 p {
-  @apply text-lg leading-relaxed mb-2 transition-colors;
+  @apply text-lg leading-relaxed mb-4 text-slate-600 dark:text-slate-400;
 }
 
 /* Linkler */
 a {
-  @apply text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition;
+  @apply transition-colors duration-200;
 }
 
-/* 🔸 Cam efektli kart (global kullanım için) */
+/* 🔸 Modern Glass Card */
 .glass-card {
-  @apply rounded-xl p-6 transition-all duration-300;
-  background: rgba(255, 255, 255, 0.08);
+  @apply rounded-2xl p-6 transition-all duration-300 border;
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
+
 .dark .glass-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(30, 41, 59, 0.4);
+  border-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
 }
+
 .glass-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 25px rgba(96, 165, 250, 0.3);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  @apply border-blue-500/30 dark:border-blue-400/30;
 }
 
-/* 🔹 Tema geçişleri daha yumuşak olsun */
-* {
-  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+/* 🌌 Animated Background Mesh */
+.mesh-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, rgba(76, 29, 149, 0.05), transparent 50%),
+    radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.05), transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.05), transparent 50%);
 }
 
-/* Tailwind dark-mode için yedek */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--bg-dark);
-    color: var(--text-dark);
+.dark .mesh-bg {
+  background: radial-gradient(circle at 50% 50%, rgba(76, 29, 149, 0.15), transparent 50%),
+    radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.1), transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.1), transparent 50%);
+}
+
+/* Selection Color */
+::selection {
+  @apply bg-blue-500/30 text-blue-900 dark:text-blue-100;
+}
+
+/* 🤖 AI Assistant Animations */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
   }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 0.8s ease-in-out infinite;
+}
+
+.delay-100 {
+  animation-delay: 0.15s;
+}
+
+.delay-200 {
+  animation-delay: 0.3s;
+}
+
+/* Smooth scrollbar for chat */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400 dark:bg-slate-600;
+}
+
+/* 🎨 Gradient Animation */
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
 }
