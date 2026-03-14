@@ -114,4 +114,3 @@ netlify deploy --prod --dir=dist
 - [ ] Proje detay sayfaları
 - [ ] İletişim formu backend entegrasyonu
 
-................////////////////////
