@@ -20,6 +20,34 @@ export default function Projects() {
   const projects: Project[] = [
     {
       id: 0,
+      title: "AltınPusula - Finans & Portföy Yönetimi",
+      description:
+        "Kişisel geliştirdiğim, React Native ve Node.js tabanlı full-stack mobil finans ve portföy yönetim uygulamasıdır. İçerisinde canlı altın, döviz ve gümüş fiyat takibi; kullanıcıların alım-satım kayıtlarını tutabildiği kâr/zarar analizli portföy yönetimi ve kişiselleştirilebilir fiyat alarm sistemleri barındırır. Veri bütünlüğü PostgreSQL ve Prisma kullanılarak kurgulanmış, eş zamanlı fiyat güncellemeleri için WebSocket mimarisi entegre edilmiştir. Google AdMob reklam desteği, Expo push bildirim sistemi ve Node-cron tabanlı otomatik günlük piyasa özetleri ile ticari bir ürün niteliği taşır. React (Vite) tabanlı kapsamlı admin paneli aracılığıyla API kaynak yönetimi, anlık trafik takibi, sistem sağlık analizleri ve bildirim zamanlamaları merkezi olarak kontrol edilebilmektedir.",
+      mainLang: "TypeScript",
+      imageUrl: "/altinpusula.png",
+      topics: ["mobile", "react-native", "full-stack", "finance", "ios", "android", "nodejs", "postgresql", "websocket"],
+      techs: ["React Native", "Node.js", "TypeScript", "PostgreSQL", "Expo", "Prisma", "Express.js", "WebSocket"],
+      liveUrl: "https://apps.apple.com/us/app/altın-pusula/id6759008199",
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.altinpusula.app&hl=tr",
+      repoUrl: "",
+      createdAt: "2026-04-15",
+    },
+    {
+      id: 1,
+      title: "FalBaz - AI Destekli Fal Uygulaması",
+      description:
+        "Kişisel geliştirdiğim, React Native ve Node.js tabanlı full-stack mobil fal uygulamasıdır. İçerisinde kahve falı, el falı ve tarot okuma türleri; Groq, Gemini ve Deepseek entegrasyonuyla yapay zeka destekli yorum üretimi ve günlük ücretsiz kota sistemi barındırır. PostgreSQL ve Prisma kullanılarak sağlam bir veri mimarisi üzerine inşa edilmiştir. Google ile giriş, AdMob reklam entegrasyonu, Expo push bildirim sistemi ve Telegram bot destekli admin bildirimleri ile ticari bir ürün niteliği taşır. React (Vite) tabanlı admin paneli aracılığıyla kullanıcı yönetimi, fal havuzu düzenleme ve yapay zeka ayarları merkezi olarak kontrol edilebilmektedir.",
+      mainLang: "TypeScript",
+      imageUrl: "/falbaz.png",
+      topics: ["mobile", "react-native", "full-stack", "ai", "ios", "android", "nodejs", "postgresql"],
+      techs: ["React Native", "Node.js", "TypeScript", "PostgreSQL", "Expo", "Prisma", "Express.js", "AI"],
+      liveUrl: "",
+      playStoreUrl: "",
+      repoUrl: "",
+      createdAt: "2026-04-01",
+    },
+    {
+      id: 2,
       title: "Ehliyet Al 2026 - Mobil Uygulama",
       description:
         "Sürücü adayları için geliştirdiğim, React Native ve Node.js tabanlı full-stack sınav hazırlık uygulamasıdır. İçerisinde deneme sınavları, konu anlatımları, kişiselleştirilmiş istatistik takibi ve günlük hedefler barındırır. PostgreSQL ve Prisma kullanılarak sağlam bir veri mimarisi üzerine inşa edilmiştir. AdMob reklam entegrasyonu ve Telegram bot destekli bildirim sistemi ile ticari bir ürün niteliği taşır.",
@@ -33,7 +61,7 @@ export default function Projects() {
       createdAt: "2026-01-01",
     },
     {
-      id: 1,
+      id: 3,
       title: "Donanım Kıyasla - Mobil Uygulama & Yönetim Paneli",
       description:
         "iOS ve Android için full-stack mobil uygulama. CPU/GPU karşılaştırma, darboğaz analizi, PC Builder ve sistem tavsiyesi özellikleri. React Native (Expo) ile mobil uygulama, Node.js/Express backend ve React.js admin paneli. PostgreSQL veritabanı, push bildirim sistemi ve AdMob reklam entegrasyonu.",
@@ -47,7 +75,7 @@ export default function Projects() {
       createdAt: "2024-11-01",
     },
     {
-      id: 2,
+      id: 4,
       title: "CryptoTrade Exchange",
       description:
         "Modern kripto para alım satım platformu. Gerçek zamanlı fiyat takibi ve güvenli işlem özellikleri. React, TypeScript ve Tailwind CSS ile optimal performans için geliştirildi.",
@@ -60,7 +88,7 @@ export default function Projects() {
       createdAt: "2024-01-15",
     },
     {
-      id: 3,
+      id: 4,
       title: "Game Key Store",
       description:
         "Modern oyun key pazaryeri platformu. Dijital oyun keylerini güvenli işlemlerle alıp satın. HTML, CSS ve JavaScript ile hızlı ve responsive kullanıcı deneyimi için geliştirildi.",
@@ -73,7 +101,7 @@ export default function Projects() {
       createdAt: "2024-02-20",
     },
     {
-      id: 4,
+      id: 5,
       title: "DoomGame Web",
       description:
         "Klasik Doom oyununun web versiyonu. Modern web teknolojileri ile nostaljik oyun deneyimi için yeniden oluşturuldu.",
@@ -86,7 +114,7 @@ export default function Projects() {
       createdAt: "2024-03-10",
     },
     {
-      id: 5,
+      id: 6,
       title: "Movie Web",
       description:
         "Kapsamlı film veritabanı platformu. Detaylı bilgiler, kullanıcı yorumları, puanlar ve fragmanlar. Binlerce filmi gelişmiş arama ve filtreleme seçenekleriyle keşfedin. HTML, CSS ve JavaScript ile geliştirildi.",
@@ -99,7 +127,7 @@ export default function Projects() {
       createdAt: "2024-04-15",
     },
     {
-      id: 6,
+      id: 7,
       title: "Otel Web",
       description:
         "Modern otel rezervasyon platformu. Oda kiralama, müsaitlik kontrolü ve online rezervasyon özellikleri. Kullanıcı dostu arayüz ile kolay rezervasyon deneyimi. HTML, CSS ve JavaScript ile geliştirildi.",
@@ -112,7 +140,7 @@ export default function Projects() {
       createdAt: "2024-05-20",
     },
     {
-      id: 7,
+      id: 8,
       title: "Corporate Website",
       description:
         "Professional corporate presentation website with modern design. Showcasing company services, portfolio and contact information. Built with Next.js for optimal performance and SEO. Server-side rendering for fast page loads.",
@@ -125,7 +153,7 @@ export default function Projects() {
       createdAt: "2024-06-10",
     },
     {
-      id: 8,
+      id: 9,
       title: "Happy Pets",
       description:
         "Veteriner kliniği web sitesi. Randevu sistemi, hizmet tanıtımı ve evcil hayvan bakım bilgileri. Kullanıcı dostu arayüz ile kolay rezervasyon deneyimi. HTML, CSS ve JavaScript ile geliştirildi.",
@@ -138,7 +166,7 @@ export default function Projects() {
       createdAt: "2024-07-15",
     },
     {
-      id: 9,
+      id: 10,
       title: "Weather Tracker",
       description:
         "Şehir bazlı hava durumu takip sistemi. Anlık hava durumu bilgileri, 5 günlük tahmin ve detaylı meteoroloji verileri. API entegrasyonu ile gerçek zamanlı veri çekimi. HTML, CSS ve JavaScript ile geliştirildi.",
@@ -167,6 +195,8 @@ export default function Projects() {
       case "expo": return <SiExpo className="text-black dark:text-white" />;
       case "prisma": return <SiPrisma className="text-[#2D3748] dark:text-white" />;
       case "express.js": return <SiExpress className="text-black dark:text-white" />;
+      case "ai": return <span className="text-purple-500">🤖</span>;
+      case "websocket": return <span className="text-green-500">🔌</span>;
       default: return <Code2 size={16} />;
     }
   };
@@ -203,7 +233,12 @@ export default function Projects() {
                 src={p.imageUrl}
                 alt={p.title}
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                style={p.id === 0 ? { objectPosition: 'center 45%' } : {}}
+                style={
+                  p.id === 0 ? { objectPosition: 'center 50%' } : 
+                  p.id === 1 ? { objectPosition: 'center 60%' } : 
+                  p.id === 2 ? { objectPosition: 'center 45%' } : 
+                  {}
+                }
               />
               <div className="absolute top-3 right-3 z-20">
                 <span className="px-3 py-1 text-xs font-semibold bg-black/50 backdrop-blur-md text-white rounded-full border border-white/10">
