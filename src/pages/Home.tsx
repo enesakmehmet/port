@@ -151,7 +151,7 @@ export default function Home() {
             backSpeed={40}
             backDelay={2000}
             loop
-            className="text-2xl sm:text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-700 dark:text-slate-300"
           />
         </motion.div>
 
