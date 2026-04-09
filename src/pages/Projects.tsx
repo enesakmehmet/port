@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Calendar, Code2, Hash, Smartphone } from "lucide-react";
+import { ExternalLink, Github, Code2, Hash, Smartphone } from "lucide-react";
 import { SiReact, SiTypescript, SiTailwindcss, SiJavascript, SiHtml5, SiCss3, SiNextdotjs, SiNodedotjs, SiPostgresql, SiExpo, SiPrisma, SiExpress } from "react-icons/si";
 
 interface Project {
@@ -249,14 +249,10 @@ export default function Projects() {
 
             {/* Content */}
             <div className="flex flex-col flex-grow">
-              <div className="flex justify-between items-start mb-3">
+              <div className="mb-3">
                 <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {p.title}
                 </h3>
-                <div className="flex items-center text-xs text-slate-500 dark:text-slate-400">
-                  <Calendar size={14} className="mr-1" />
-                  {new Date(p.createdAt).toLocaleDateString("tr-TR")}
-                </div>
               </div>
 
               <div className="relative group/desc">
